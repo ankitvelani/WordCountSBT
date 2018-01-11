@@ -1,0 +1,62 @@
+
+
+============ Creating Spark SBT Application ==============
+
+
+
+Step 1 : Create sbt project structure.
+
+mkdir -p sbt-demo/src/main/scala
+touch  sbt-demo/build.sbt
+touch sbt-demo/src/main/scala/WordCount.scala
+
+
+
+
+Step 2 : Copy below line and paste it into build.sbt
+gedit sbt-demo/build.sbt 
+
+
+name := "WordCount"
+
+version := "1.0"
+
+scalaVersion := "2.11.4"
+
+libraryDependencies += "org.apache.spark" % "spark-core_2.11" % "2.0.0"
+
+
+
+
+
+Step 3 : Compile project with sbt
+
+cd sbt-demo
+sbt compile
+
+
+
+
+Step 4 : Write WordCount.scala code
+
+gedit src/main/scala/WordCount.scala
+
+
+
+Step 5 : Create sbt package
+
+sbt package
+
+
+
+
+Step 6 : execute jar file
+
+spark-submit --class WordCount --master local /home/ubuntu/sbt-demo/target/scala-2.11/wordcount_2.11-1.0.jar /home/ubuntu/Desktop/sbt/input.txt /home/ubuntu/Desktop/sbt/output
+
+
+Step 7 : Output directory will be create inside sbt directory.
+
+
+
+
